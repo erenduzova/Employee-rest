@@ -34,4 +34,12 @@ public class EmployeeRestController {
         return theEmployee;
     }
 
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee newEmployee) {
+        // Set id to 0 to force a save of new item instead of update
+        newEmployee.setId(0);
+        Employee savedEmployee = employeeService.save(newEmployee);
+        return savedEmployee;
+    }
+
 }
